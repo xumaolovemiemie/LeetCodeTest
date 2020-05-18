@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
 
     public static void main(String[] args) {
-
+        List<List<Integer>> lists = threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        System.out.println(lists.toString());
     }
 
 
@@ -28,9 +31,42 @@ public class Solution {
      * <p>
      * 注意：答案中不可以包含重复的三元组。
      */
-    public List<List<Integer>> threeSum(int[] nums) {
-
-        return null;
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<>();
+        if (nums == null || nums.length < 3) {
+            return lists;
+        }
+        Arrays.sort(nums);
+        int L, R;
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) {
+                return lists;
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            L = i + 1;
+            R = nums.length - 1;
+            while (L < R) {
+                int res = nums[i] + nums[L] + nums[R];
+                if (res == 0) {
+                    lists.add(Arrays.asList(nums[i], nums[L], nums[R]));
+                    while (L < R && nums[R] == nums[R - 1]) {
+                        R--;
+                    }
+                    while (L < R && nums[L] == nums[L+1]) {
+                        L++;
+                    }
+                    R--;
+                    L++;
+                } else if (res > 0) {
+                    R--;
+                } else {
+                    L++;
+                }
+            }
+        }
+        return lists;
     }
 
     /**
