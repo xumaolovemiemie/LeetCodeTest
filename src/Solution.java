@@ -75,7 +75,23 @@ public class Solution {
      */
     public static int trap(int[] height) {
         int area = 0;
-
+        int leftMax = 0, rightMax = 0;
+        int left = 0, right = height.length - 1;
+        while (left < right) {
+            if (height[left] <= height[right]) {
+                if (height[left] < leftMax) {
+                    area += leftMax - height[left++];
+                } else {
+                    leftMax = height[left++];
+                }
+            } else {
+                if (height[right] < rightMax) {
+                    area += rightMax - height[right--];
+                } else {
+                    rightMax = height[right--];
+                }
+            }
+        }
         return area;
     }
 
