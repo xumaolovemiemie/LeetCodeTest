@@ -5,7 +5,7 @@ import java.util.List;
 public class Solution {
 
     public static void main(String[] args) {
-        int area = trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1});
+        int area = removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
         System.out.println("接到的雨水为：" + area);
     }
 
@@ -37,7 +37,7 @@ public class Solution {
             return lists;
         }
         Arrays.sort(nums);
-        int L, R;
+        int l, r;
         for (int i = 0; i < nums.length - 2; i++) {
             if (nums[i] > 0) {
                 break;
@@ -45,28 +45,47 @@ public class Solution {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-            L = i + 1;
-            R = nums.length - 1;
-            while (L < R) {
-                int sum = nums[i] + nums[L] + nums[R];
+            l = i + 1;
+            r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
                 if (sum == 0) {
-                    lists.add(Arrays.asList(nums[i], nums[L], nums[R]));
-                    while (L < R && nums[L] == nums[L + 1]) {
-                        L++;
+                    lists.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    while (l < r && nums[l] == nums[l + 1]) {
+                        l++;
                     }
-                    while (L < R && nums[R] == nums[R - 1]) {
-                        R--;
+                    while (l < r && nums[r] == nums[r - 1]) {
+                        r--;
                     }
-                    L++;
-                    R--;
+                    l++;
+                    r--;
                 } else if (sum > 0) {
-                    R--;
+                    r--;
                 } else {
-                    L++;
+                    l++;
                 }
             }
         }
         return lists;
+    }
+
+    /**
+     * 26. 删除排序数组中的重复项
+     * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+     * <p>
+     * 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+     */
+    public static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int index = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[index]) {
+                nums[++index] = nums[i];
+            }
+        }
+        return index + 1;
     }
 
     /**
@@ -130,12 +149,12 @@ public class Solution {
             return n;
         }
         int num = 0;
-        int num_1 = 2;
-        int num_2 = 1;
+        int num1 = 2;
+        int num2 = 1;
         for (int i = 3; i <= n; i++) {
-            num = num_1 + num_2;
-            num_2 = num_1;
-            num_1 = num;
+            num = num1 + num2;
+            num2 = num1;
+            num1 = num;
         }
         return num;
     }
