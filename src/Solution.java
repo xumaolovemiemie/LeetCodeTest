@@ -122,6 +122,12 @@ public class Solution {
      * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
      * <p>
      * 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+     * <p>
+     * 说明:
+     * <p>
+     * 为什么返回数值是整数，但输出的答案是数组呢?
+     * <p>
+     * 请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
      */
     public static int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -257,6 +263,11 @@ public class Solution {
     /**
      * 189. 旋转数组
      * 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
+     * <p>
+     * 说明:
+     * <p>
+     * 1.尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。
+     * 2.要求使用空间复杂度为 O(1) 的 原地 算法。
      */
     public static void rotate(int[] nums, int k) {
         if (nums == null || nums.length <= 1) {
@@ -269,5 +280,42 @@ public class Solution {
             nums[i % k] = current;
             current = z;
         }
+    }
+
+    /**
+     * 283. 移动零
+     * <p>
+     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     * <p>
+     * 说明:
+     * <p>
+     * 1.必须在原数组上操作，不能拷贝额外的数组。
+     * 2.尽量减少操作次数。
+     */
+    public static void moveZeroes(int[] nums) {
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+
+        for (int i = j; i < nums.length; ++i) {
+            nums[i] = 0;
+        }
+    }
+
+    /**
+     * 509. 斐波拉契数
+     * <p>
+     * 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
+     * <p>
+     * F(0) = 0,   F(1) = 1
+     * F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
+     * 给定 N，计算 F(N)。
+     */
+    public static int fib(int N) {
+
     }
 }
