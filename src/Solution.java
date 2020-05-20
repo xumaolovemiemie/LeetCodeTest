@@ -1,4 +1,3 @@
-import javax.print.DocFlavor;
 import java.util.*;
 
 public class Solution {
@@ -209,6 +208,50 @@ public class Solution {
             num1 = num;
         }
         return num;
+    }
+
+    /**
+     * 84. 柱状图中最大的矩形
+     * <p>
+     * 给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
+     * <p>
+     * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
+     */
+    public int largestRectangleArea(int[] heights) {
+
+    }
+
+    /**
+     * 155. 最小栈
+     * <p>
+     * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+     * <p>
+     * push(x) —— 将元素 x 推入栈中。
+     * pop() —— 删除栈顶的元素。
+     * top() —— 获取栈顶元素。
+     * getMin() —— 检索栈中的最小元素。
+     */
+    public static class MinStack {
+
+        public MinStack() {
+
+        }
+
+        public void push(int x) {
+
+        }
+
+        public void pop() {
+
+        }
+
+        public int top() {
+
+        }
+
+        public int getMin() {
+
+        }
     }
 
     /**
