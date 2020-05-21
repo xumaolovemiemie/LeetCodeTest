@@ -3,7 +3,9 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-
+        System.out.println("fib(2)"+fib(2));
+        System.out.println("fib(3)"+fib(3));
+        System.out.println("fib(4)"+fib(4));
     }
 
     /**
@@ -223,42 +225,42 @@ public class Solution {
      * <p>
      * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
      */
-    public int largestRectangleArea(int[] heights) {
-
-    }
-
-    /**
-     * 155. 最小栈
-     * <p>
-     * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
-     * <p>
-     * push(x) —— 将元素 x 推入栈中。
-     * pop() —— 删除栈顶的元素。
-     * top() —— 获取栈顶元素。
-     * getMin() —— 检索栈中的最小元素。
-     */
-    public static class MinStack {
-
-        public MinStack() {
-
-        }
-
-        public void push(int x) {
-
-        }
-
-        public void pop() {
-
-        }
-
-        public int top() {
-
-        }
-
-        public int getMin() {
-
-        }
-    }
+//    public int largestRectangleArea(int[] heights) {
+//
+//    }
+//
+//    /**
+//     * 155. 最小栈
+//     * <p>
+//     * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+//     * <p>
+//     * push(x) —— 将元素 x 推入栈中。
+//     * pop() —— 删除栈顶的元素。
+//     * top() —— 获取栈顶元素。
+//     * getMin() —— 检索栈中的最小元素。
+//     */
+//    public static class MinStack {
+//
+//        public MinStack() {
+//
+//        }
+//
+//        public void push(int x) {
+//
+//        }
+//
+//        public void pop() {
+//
+//        }
+//
+//        public int top() {
+//
+//        }
+//
+//        public int getMin() {
+//
+//        }
+//    }
 
     /**
      * 189. 旋转数组
@@ -293,9 +295,9 @@ public class Solution {
      * <p>
      * 你能在线性时间复杂度内解决此题吗？
      */
-    public static int[] maxSlidingWindow(int[] nums, int k) {
-
-    }
+//    public static int[] maxSlidingWindow(int[] nums, int k) {
+//
+//    }
 
     /**
      * 283. 移动零
@@ -315,7 +317,6 @@ public class Solution {
                 j++;
             }
         }
-
         for (int i = j; i < nums.length; ++i) {
             nums[i] = 0;
         }
@@ -331,7 +332,17 @@ public class Solution {
      * 给定 N，计算 F(N)。
      */
     public static int fib(int N) {
-
+        if (N == 0) return 0;
+        if (N == 1) return 1;
+        int n1 = 1;
+        int n2 = 0;
+        int temp = n1 + n2;
+        for (int i = 2; i <= N; i++) {
+            temp = n2 + n1;
+            n2 = n1;
+            n1 = temp;
+        }
+        return temp;
     }
 
     /**
@@ -356,69 +367,69 @@ public class Solution {
      * 操作次数的范围为 [1, 1000]
      * 请不要使用内置的双端队列库。
      */
-    public static class MyCircularDeque {
-
-        /**
-         * Initialize your data structure here. Set the size of the deque to be k.
-         */
-        public MyCircularDeque(int k) {
-
-        }
-
-        /**
-         * Adds an item at the front of Deque. Return true if the operation is successful.
-         */
-        public boolean insertFront(int value) {
-
-        }
-
-        /**
-         * Adds an item at the rear of Deque. Return true if the operation is successful.
-         */
-        public boolean insertLast(int value) {
-
-        }
-
-        /**
-         * Deletes an item from the front of Deque. Return true if the operation is successful.
-         */
-        public boolean deleteFront() {
-
-        }
-
-        /**
-         * Deletes an item from the rear of Deque. Return true if the operation is successful.
-         */
-        public boolean deleteLast() {
-
-        }
-
-        /**
-         * Get the front item from the deque.
-         */
-        public int getFront() {
-
-        }
-
-        /**
-         * Get the last item from the deque.
-         */
-        public int getRear() {
-
-        }
-
-        /**
-         * Checks whether the circular deque is empty or not.
-         */
-        public boolean isEmpty() {
-
-        }
-
-        /**
-         * Checks whether the circular deque is full or not.
-         */
-        public boolean isFull() {
-
-        }
-    }
+//    public static class MyCircularDeque {
+//
+//        /**
+//         * Initialize your data structure here. Set the size of the deque to be k.
+//         */
+//        public MyCircularDeque(int k) {
+//
+//        }
+//
+//        /**
+//         * Adds an item at the front of Deque. Return true if the operation is successful.
+//         */
+//        public boolean insertFront(int value) {
+//
+//        }
+//
+//        /**
+//         * Adds an item at the rear of Deque. Return true if the operation is successful.
+//         */
+//        public boolean insertLast(int value) {
+//
+//        }
+//
+//        /**
+//         * Deletes an item from the front of Deque. Return true if the operation is successful.
+//         */
+//        public boolean deleteFront() {
+//
+//        }
+//
+//        /**
+//         * Deletes an item from the rear of Deque. Return true if the operation is successful.
+//         */
+//        public boolean deleteLast() {
+//
+//        }
+//
+//        /**
+//         * Get the front item from the deque.
+//         */
+//        public int getFront() {
+//
+//        }
+//
+//        /**
+//         * Get the last item from the deque.
+//         */
+//        public int getRear() {
+//
+//        }
+//
+//        /**
+//         * Checks whether the circular deque is empty or not.
+//         */
+//        public boolean isEmpty() {
+//
+//        }
+//
+//        /**
+//         * Checks whether the circular deque is full or not.
+//         */
+//        public boolean isFull() {
+//
+//        }
+//    }
 }
