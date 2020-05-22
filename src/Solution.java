@@ -3,7 +3,6 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-        //206,141,21,19,876
 
     }
 
@@ -19,9 +18,8 @@ public class Solution {
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
                 return new int[]{map.get(nums[i]), i};
-            } else {
-                map.put(target - nums[i], i);
             }
+            map.put(target - nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
     }
@@ -226,7 +224,7 @@ public class Solution {
      * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
      */
     public int largestRectangleArea(int[] heights) {
-        
+
     }
 
     /**
@@ -317,7 +315,6 @@ public class Solution {
                 j++;
             }
         }
-
         for (int i = j; i < nums.length; ++i) {
             nums[i] = 0;
         }
@@ -333,7 +330,17 @@ public class Solution {
      * 给定 N，计算 F(N)。
      */
     public static int fib(int N) {
-
+        if (N == 0) return 0;
+        if (N == 1) return 1;
+        int n1 = 1;
+        int n2 = 0;
+        int temp = n1 + n2;
+        for (int i = 2; i <= N; i++) {
+            temp = n2 + n1;
+            n2 = n1;
+            n1 = temp;
+        }
+        return temp;
     }
 
     /**
