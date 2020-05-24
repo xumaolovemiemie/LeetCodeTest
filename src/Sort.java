@@ -2,8 +2,7 @@ import java.util.Arrays;
 
 public class Sort {
     public static void main(String[] args) {
-//        int[] nums = new int[]{7, 1, 5, 6, 2, 4, 3};
-        int[] nums = new int[]{1, 2, 3, 4, 5, 7, 6};
+        int[] nums = new int[]{7, 1, 5, 6, 2, 4, 3};
         selectionSort(nums);
         System.out.println("结果为" + Arrays.toString(nums));
     }
