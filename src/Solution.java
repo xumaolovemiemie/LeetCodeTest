@@ -224,7 +224,8 @@ public class Solution {
      * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
      */
     public int largestRectangleArea(int[] heights) {
-
+        // TODO: 2020/5/23 待实现
+        return -1;
     }
 
     /**
@@ -238,6 +239,7 @@ public class Solution {
      * getMin() —— 检索栈中的最小元素。
      */
     public static class MinStack {
+        // TODO: 2020/5/23 待实现
 
         public MinStack() {
 
@@ -252,11 +254,13 @@ public class Solution {
         }
 
         public int top() {
-
+            // TODO: 2020/5/23 待实现
+            return -1;
         }
 
         public int getMin() {
-
+            // TODO: 2020/5/23 待实现
+            return -1;
         }
     }
 
@@ -294,7 +298,8 @@ public class Solution {
      * 你能在线性时间复杂度内解决此题吗？
      */
     public static int[] maxSlidingWindow(int[] nums, int k) {
-
+        // TODO: 2020/5/23 待实现
+        return null;
     }
 
     /**
@@ -366,6 +371,7 @@ public class Solution {
      * 请不要使用内置的双端队列库。
      */
     public static class MyCircularDeque {
+        // TODO: 2020/5/23 待实现
 
         /**
          * Initialize your data structure here. Set the size of the deque to be k.
@@ -378,56 +384,64 @@ public class Solution {
          * Adds an item at the front of Deque. Return true if the operation is successful.
          */
         public boolean insertFront(int value) {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
 
         /**
          * Adds an item at the rear of Deque. Return true if the operation is successful.
          */
         public boolean insertLast(int value) {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
 
         /**
          * Deletes an item from the front of Deque. Return true if the operation is successful.
          */
         public boolean deleteFront() {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
 
         /**
          * Deletes an item from the rear of Deque. Return true if the operation is successful.
          */
         public boolean deleteLast() {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
 
         /**
          * Get the front item from the deque.
          */
         public int getFront() {
-
+            // TODO: 2020/5/23 待实现
+            return -1;
         }
 
         /**
          * Get the last item from the deque.
          */
         public int getRear() {
-
+            // TODO: 2020/5/23 待实现
+            return -1;
         }
 
         /**
          * Checks whether the circular deque is empty or not.
          */
         public boolean isEmpty() {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
 
         /**
          * Checks whether the circular deque is full or not.
          */
         public boolean isFull() {
-
+            // TODO: 2020/5/23 待实现
+            return false;
         }
     }
 }
