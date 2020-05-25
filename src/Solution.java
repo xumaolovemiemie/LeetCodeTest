@@ -3,7 +3,8 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-
+        int i = largestRectangleArea2(new int[]{2, 1, 5, 6, 2, 3});
+        System.out.println("最大面积为：" + i);
     }
 
     /**
@@ -222,10 +223,66 @@ public class Solution {
      * 给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
      * <p>
      * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
+     * <p>
+     * 思路一
+     * <p>
+     * 1.从左往右遍历，依次记录下最接近并且小于当前柱高的柱子的索引，第一个元素记录索引为-1
+     * <p>
+     * 2.从右往左遍历，依次记录下最接近并且小于当前柱高的柱子的索引，最后一个元素记录索引为n
+     * <p>
+     * 3.遍历计算所有柱子所能生成的最大矩形的面积，只需要用右边的索引减去左边索引并且减一，乘以当前柱高，通过对比，最后得出最大面积
      */
-    public int largestRectangleArea(int[] heights) {
-        // TODO: 2020/5/23 待实现
-        return -1;
+    public static int largestRectangleArea1(int[] heights) {
+        if (heights == null || heights.length == 0) {
+            return 0;
+        }
+        int length = heights.length;
+        int[] leftMinIndex = new int[length];
+        leftMinIndex[0] = -1;
+        for (int i = 1; i < length; i++) {
+            //先假设最近并且小于当前柱子的索引为当前索引前面一位
+            int minIndex = i - 1;
+            while (minIndex >= 0 && heights[i] <= heights[minIndex]) {
+                minIndex = leftMinIndex[minIndex];
+            }
+            leftMinIndex[i] = minIndex;
+        }
+        int[] rightMinIndex = new int[length];
+        rightMinIndex[length - 1] = length;
+        for (int i = length - 2; i >= 0; i--) {
+            //先假设最近并且小于当前柱子的索引为当前索引后面一位
+            int minIndex = i + 1;
+            while (minIndex < length && heights[i] <= heights[minIndex]) {
+                minIndex = rightMinIndex[minIndex];
+            }
+            rightMinIndex[i] = minIndex;
+        }
+        int maxArea = 0;
+        for (int i = 0; i < length; i++) {
+            maxArea = Math.max(maxArea, (rightMinIndex[i] - leftMinIndex[i] - 1) * heights[i]);
+        }
+        return maxArea;
+    }
+
+    // TODO: 2020/5/22  思路没想好
+    /**
+     * 思路二
+     *
+     *
+     */
+    public static int largestRectangleArea2(int[] heights) {
+        int res = 0;
+        Deque<Integer> stack = new ArrayDeque<>();
+        int[] newHeights = new int[heights.length + 2];
+        System.arraycopy(heights, 0, newHeights, 1, heights.length + 1 - 1);
+        for (int i = 0; i < newHeights.length; i++) {
+            while (!stack.isEmpty() && newHeights[stack.peek()] > newHeights[i]) {
+                int cur = stack.pop();
+                res = Math.max(res, (i - stack.peek() - 1) * newHeights[cur]);
+            }
+            stack.push(i);
+        }
+        return res;
     }
 
     /**
@@ -334,13 +391,17 @@ public class Solution {
      * F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
      * 给定 N，计算 F(N)。
      */
-    public static int fib(int N) {
-        if (N == 0) return 0;
-        if (N == 1) return 1;
+    public static int fib(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
         int n1 = 1;
         int n2 = 0;
         int temp = n1 + n2;
-        for (int i = 2; i <= N; i++) {
+        for (int i = 2; i <= n; i++) {
             temp = n2 + n1;
             n2 = n1;
             n1 = temp;
