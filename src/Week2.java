@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Week2 {
     public static void main(String[] args) {
-        HashMap
+
     }
 
     /**
@@ -37,9 +37,7 @@ public class Week2 {
     public int[] getLeastNumbers(int[] arr, int k) {
         Arrays.sort(arr);
         int[] res = new int[k];
-        for (int i = 0; i < k; i++) {
-            res[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, res, 0, k);
         return res;
     }
 
@@ -92,7 +90,8 @@ public class Week2 {
      * https://leetcode-cn.com/problems/chou-shu-lcof/
      */
     public int nthUglyNumber(int n) {
-
+        // TODO: 2020/5/31
+        return -1;
     }
 
     /**
@@ -108,7 +107,8 @@ public class Week2 {
      * * }
      */
     public List<Integer> inorderTraversal(TreeNode root) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
     /**
@@ -124,7 +124,8 @@ public class Week2 {
      * * }
      */
     public List<Integer> preorderTraversal(TreeNode root) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
     /**
@@ -148,7 +149,8 @@ public class Week2 {
      * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
      */
     public int[] topKFrequent(int[] nums, int k) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
     /**
@@ -173,7 +175,8 @@ public class Week2 {
      * * };
      */
     public List<List<Integer>> levelOrder(Node root) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
     /**
@@ -198,7 +201,8 @@ public class Week2 {
      * * };
      */
     public List<Integer> preorder(Node root) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
     /**
@@ -223,7 +227,8 @@ public class Week2 {
      * * }
      */
     public List<Integer> postorder(Node root) {
-
+        // TODO: 2020/5/31
+        return null;
     }
 
 }
