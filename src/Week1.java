@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class Week1 {
 
     public static void main(String[] args) {
         int i = largestRectangleArea2(new int[]{2, 1, 5, 6, 2, 3});
