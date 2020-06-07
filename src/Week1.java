@@ -3,8 +3,15 @@ import java.util.*;
 public class Week1 {
 
     public static void main(String[] args) {
-        int i = largestRectangleArea2(new int[]{2, 1, 5, 6, 2, 3});
-        System.out.println("最大面积为：" + i);
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(">>" + minStack.getMin());
+        minStack.pop();
+        System.out.println(">>" + minStack.top());
+        System.out.println(">>" + minStack.getMin());
+        System.out.println("..");
     }
 
     /**
@@ -264,23 +271,23 @@ public class Week1 {
         return maxArea;
     }
 
-    // TODO: 2020/5/22  思路没想好
     /**
      * 思路二
-     *
-     *
+     * 1.从前到后依次遍历（栈用于记录元素索引）
+     * 2.如果当前元素小于栈顶元素，则栈顶元素出栈，计算出以栈顶元素为高的最大矩形面积
+     * 3.直到当前元素小于或者等于栈顶元素后，将当前元素放入栈中，依次循环
      */
     public static int largestRectangleArea2(int[] heights) {
         int res = 0;
-        Deque<Integer> stack = new ArrayDeque<>();
+        Stack<Integer> deque = new Stack<>();
         int[] newHeights = new int[heights.length + 2];
-        System.arraycopy(heights, 0, newHeights, 1, heights.length + 1 - 1);
+        System.arraycopy(heights, 0, newHeights, 1, heights.length);
         for (int i = 0; i < newHeights.length; i++) {
-            while (!stack.isEmpty() && newHeights[stack.peek()] > newHeights[i]) {
-                int cur = stack.pop();
-                res = Math.max(res, (i - stack.peek() - 1) * newHeights[cur]);
+            while (!deque.isEmpty() && newHeights[deque.peek()] > newHeights[i]) {
+                int cur = deque.pop();
+                res = Math.max(res, (i - deque.peek() - 1) * newHeights[cur]);
             }
-            stack.push(i);
+            deque.push(i);
         }
         return res;
     }
@@ -294,30 +301,38 @@ public class Week1 {
      * pop() —— 删除栈顶的元素。
      * top() —— 获取栈顶元素。
      * getMin() —— 检索栈中的最小元素。
+     * <p>
+     * pop、top 和 getMin 操作总是在 非空栈 上调用。
      */
     public static class MinStack {
-        // TODO: 2020/5/23 待实现
+        private final Stack<Integer> stack;
+        private final Stack<Integer> minStack;
 
         public MinStack() {
-
+            stack = new Stack<>();
+            minStack = new Stack<>();
         }
 
         public void push(int x) {
-
+            stack.push(x);
+            if (minStack.size() == 0 || minStack.peek() >= x) {
+                minStack.push(x);
+            }
         }
 
         public void pop() {
-
+            int pop = stack.pop();
+            if (pop == minStack.peek()) {
+                minStack.pop();
+            }
         }
 
         public int top() {
-            // TODO: 2020/5/23 待实现
-            return -1;
+            return stack.peek();
         }
 
         public int getMin() {
-            // TODO: 2020/5/23 待实现
-            return -1;
+            return minStack.peek();
         }
     }
 
@@ -432,77 +447,119 @@ public class Week1 {
      * 请不要使用内置的双端队列库。
      */
     public static class MyCircularDeque {
-        // TODO: 2020/5/23 待实现
+        private ListNode head;
+        private ListNode tail;
+        private int size;
+        private int k;
 
         /**
          * Initialize your data structure here. Set the size of the deque to be k.
          */
         public MyCircularDeque(int k) {
-
+            this.k = k;
+            size = 0;
+            head = new ListNode(-1);
+            tail = new ListNode(-1);
+            head.next = tail;
+            tail.pre = head;
         }
 
         /**
          * Adds an item at the front of Deque. Return true if the operation is successful.
          */
         public boolean insertFront(int value) {
-            // TODO: 2020/5/23 待实现
-            return false;
+            if (size == k) {
+                return false;
+            }
+            ListNode listNode = new ListNode(value);
+            ListNode next = head.next;
+            head.next = listNode;
+            listNode.next = next;
+            next.pre = listNode;
+            listNode.pre = head;
+            size++;
+            return true;
         }
 
         /**
          * Adds an item at the rear of Deque. Return true if the operation is successful.
          */
         public boolean insertLast(int value) {
-            // TODO: 2020/5/23 待实现
-            return false;
+            if (size == k) {
+                return false;
+            }
+            ListNode listNode = new ListNode(value);
+            ListNode pre = tail.pre;
+            tail.pre = listNode;
+            listNode.pre = pre;
+            pre.next = listNode;
+            listNode.next = tail;
+            size++;
+            return true;
         }
 
         /**
          * Deletes an item from the front of Deque. Return true if the operation is successful.
          */
         public boolean deleteFront() {
-            // TODO: 2020/5/23 待实现
-            return false;
+            if (size == 0) {
+                return false;
+            }
+            head.next = head.next.next;
+            head.next.pre = head;
+            size--;
+            return true;
         }
 
         /**
          * Deletes an item from the rear of Deque. Return true if the operation is successful.
          */
         public boolean deleteLast() {
-            // TODO: 2020/5/23 待实现
-            return false;
+            if (size == 0) {
+                return false;
+            }
+            tail.pre = tail.pre.pre;
+            tail.pre.next = tail;
+            size--;
+            return true;
         }
 
         /**
          * Get the front item from the deque.
          */
         public int getFront() {
-            // TODO: 2020/5/23 待实现
-            return -1;
+            return head.next.val;
         }
 
         /**
          * Get the last item from the deque.
          */
         public int getRear() {
-            // TODO: 2020/5/23 待实现
-            return -1;
+            return tail.pre.val;
         }
 
         /**
          * Checks whether the circular deque is empty or not.
          */
         public boolean isEmpty() {
-            // TODO: 2020/5/23 待实现
-            return false;
+            return head.next == tail;
         }
 
         /**
          * Checks whether the circular deque is full or not.
          */
         public boolean isFull() {
-            // TODO: 2020/5/23 待实现
-            return false;
+            return size == k;
+        }
+
+        class ListNode {
+            int val;
+            ListNode pre;
+            ListNode next;
+
+            public ListNode(int val) {
+                this.val = val;
+            }
         }
     }
 }
