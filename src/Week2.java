@@ -211,7 +211,7 @@ public class Week2 {
      * 你可以按任意顺序返回答案。
      */
     public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
             if (map.containsKey(num)) {
                 map.put(num, map.get(num) + 1);
@@ -241,11 +241,28 @@ public class Week2 {
      * 429. N叉树的层序遍历
      * <p>
      * 给定一个 N 叉树，返回其节点值的层序遍历。 (即从左到右，逐层遍历)。
-     * * Definition for a Node.
+     * <p>
+     * 说明:
+     * <p>
+     * 树的深度不会超过 1000。
+     * 树的节点总数不会超过 5000。
      */
     public List<List<Integer>> levelOrder(Node root) {
-        // TODO: 2020/5/31
-        return null;
+        List<List<Integer>> list = new ArrayList<>();
+        if (root != null) {
+            addElement429(list, root, 0);
+        }
+        return list;
+    }
+
+    private void addElement429(List<List<Integer>> list, Node root, int level) {
+        if (list.size() <= level) {
+            list.add(new ArrayList<>());
+        }
+        list.get(level).add(root.val);
+        for (Node child : root.children) {
+            addElement429(list, child, level + 1);
+        }
     }
 
     /**
@@ -254,8 +271,23 @@ public class Week2 {
      * 给定一个 N 叉树，返回其节点值的前序遍历。
      */
     public List<Integer> preorder(Node root) {
-        // TODO: 2020/5/31
-        return null;
+        List<Integer> list = new ArrayList<>();
+        addElement589(list, root);
+        return list;
+    }
+
+    private void addElement589(List<Integer> list, Node root) {
+        if (root == null) {
+            return;
+        }
+        list.add(root.val);
+        List<Node> children = root.children;
+        if (children == null || children.size() == 0) {
+            return;
+        }
+        for (Node child : children) {
+            addElement589(list, child);
+        }
     }
 
     /**
@@ -264,8 +296,22 @@ public class Week2 {
      * 给定一个 N 叉树，返回其节点值的后序遍历。
      */
     public List<Integer> postorder(Node root) {
-        // TODO: 2020/5/31
-        return null;
+        List<Integer> list = new ArrayList<>();
+        addElement590(list, root);
+        return list;
+    }
+
+    private void addElement590(List<Integer> list, Node root) {
+        if (root == null) {
+            return;
+        }
+        List<Node> children = root.children;
+        if (children != null && children.size() > 0) {
+            for (Node child : children) {
+                addElement590(list, child);
+            }
+        }
+        list.add(root.val);
     }
 
 }
