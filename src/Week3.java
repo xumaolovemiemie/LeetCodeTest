@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * @author xumao
+ */
 public class Week3 {
     public static void main(String[] args) {
 
@@ -218,16 +221,16 @@ public class Week3 {
 
     private void recursion51(List<List<String>> list, int level, int index, int max, boolean[][] place) {
         // TODO: 2020/6/7 实现有问题
-        if (level == max || index == max) {
-            return;
-        }
-        if (list.size() == level) {
-            list.add(new ArrayList<>());
-        }
-        for (int i = 0; i < max; i++) {
-            recursion51(list, level, i, max, place);
-        }
-        recursion51(list, level + 1, 0, max, place);
+//        if (level == max || index == max) {
+//            return;
+//        }
+//        if (list.size() == level) {
+//            list.add(new ArrayList<>());
+//        }
+//        for (int i = 0; i < max; i++) {
+//            recursion51(list, level, i, max, place);
+//        }
+//        recursion51(list, level + 1, 0, max, place);
     }
 
     /**
