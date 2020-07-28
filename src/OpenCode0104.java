@@ -9,9 +9,17 @@
  */
 public class OpenCode0104 {
 
-//    public int maxDepth(TreeNode root) {
-//
-//    }
+    /**
+     * 可以理解为求二叉树的深度
+     * 如果当前节点为空，则以该节点为根节点的二叉树最大深度为0
+     * 如果当前节点不为空，左叶子节点为根节点的最大深度和右叶子节点为根节点的最大深度中较大者加上1
+     */
+    public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
 
     static class TreeNode {
         int val;

@@ -7,7 +7,7 @@
  *
  * https://leetcode-cn.com/problems/coin-change
  */
-public class OpenClass0322 {
+public class OpenCode0322 {
 
 //    public int coinChange(int[] coins, int amount) {
 //
